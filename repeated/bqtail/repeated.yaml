@@ -1,0 +1,22 @@
+Async: true
+When:
+  Prefix: /repeated/
+  Suffix: .json
+
+Batch:
+  Window:
+    DurationInSec: 120
+Dest:
+  Table: poc.${tableName}
+  Pattern: /repeated/\d+/\d+/\d+/\d+/int/([^\/]+)/.+
+  Parameters:
+    - Name: tableName
+      Expression: $1
+  MaxBadRecords: 1
+  Transient:
+    Dataset: temp
+    Template: poc.repeated_idx_int_tmpl
+OnSuccess:
+  - Action: delete
+
+
