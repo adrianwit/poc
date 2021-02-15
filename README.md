@@ -42,7 +42,7 @@ Batch:
   Window:
     DurationInSec: 120
 Dest:
-  Table: viant-e2e:poc.${tableName}
+  Table: poc.${tableName}
   Pattern: /repeated/\d+/\d+/\d+/\d+/int/([^\/]+)/.+
   Parameters:
     - Name: tableName
